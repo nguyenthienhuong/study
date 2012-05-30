@@ -1,0 +1,5 @@
+#surefire
+#Wed May 30 16:00:09 ICT 2012
+user.dir=/home/huong_nguyenthien/java/privateProject/study/bookstore-services
+localRepository=/home/huong_nguyenthien/java/exo-dependencies/repository
+basedir=/home/huong_nguyenthien/java/privateProject/study/bookstore-services
