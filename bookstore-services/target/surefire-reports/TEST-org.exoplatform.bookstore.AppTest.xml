@@ -19,7 +19,7 @@
     <property name="basedir" value="/home/huong_nguyenthien/java/privateProject/study/bookstore-services"/>
     <property name="java.endorsed.dirs" value="/home/huong_nguyenthien/java/jdk1.6/jre/lib/endorsed"/>
     <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/home/huong_nguyenthien/java/privateProject/study/bookstore-services/target/surefire/surefirebooter6820171443712796679.jar"/>
+    <property name="surefire.real.class.path" value="/home/huong_nguyenthien/java/privateProject/study/bookstore-services/target/surefire/surefirebooter938699820189916843.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>

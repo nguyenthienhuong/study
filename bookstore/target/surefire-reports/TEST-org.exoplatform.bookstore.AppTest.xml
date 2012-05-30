@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.011" errors="0" skipped="0" tests="1" name="org.exoplatform.bookstore.AppTest">
+<testsuite failures="0" time="0.013" errors="0" skipped="0" tests="1" name="org.exoplatform.bookstore.AppTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/home/huong_nguyenthien/java/jdk1.6/jre/lib/i386"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="/home/huong_nguyenthien/java/privateProject/study/bookstore"/>
     <property name="java.endorsed.dirs" value="/home/huong_nguyenthien/java/jdk1.6/jre/lib/endorsed"/>
     <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/home/huong_nguyenthien/java/privateProject/study/bookstore/target/surefire/surefirebooter818901346232083087.jar"/>
+    <property name="surefire.real.class.path" value="/home/huong_nguyenthien/java/privateProject/study/bookstore/target/surefire/surefirebooter6848489479533928134.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>
