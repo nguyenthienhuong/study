@@ -14,6 +14,7 @@ public class Book {
 	private Long priceSell;
 	private CATEGORY category;
 	private String content;
+	private String bookId;
 	
 	
 	public Book(String bookName, String bookAuthor,String content, Date datePublisher, Long pricePublisher, Long priceSell, CATEGORY category){
@@ -68,6 +69,14 @@ public class Book {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
 	}
 
 	 	

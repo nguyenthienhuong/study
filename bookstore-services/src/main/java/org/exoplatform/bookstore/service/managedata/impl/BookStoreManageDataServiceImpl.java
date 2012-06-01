@@ -1,22 +1,71 @@
 package org.exoplatform.bookstore.service.managedata.impl;
 
+import java.util.Calendar;
 import java.util.List;
+
+import javax.jcr.Node;
+import javax.jcr.Session;
 
 import org.exoplatform.bookstore.Entity.Book;
 import org.exoplatform.bookstore.service.managedata.BookStoreManageDataService;
 import org.exoplatform.services.jcr.RepositoryService;
-import org.exoplatform.test.JCRDataStorage;
-import org.exoplatform.bookstore.service.managedata.impl.*;
+import org.exoplatform.services.jcr.core.ManageableRepository;
+import org.exoplatform.services.jcr.ext.app.SessionProviderService;
+import org.exoplatform.services.jcr.ext.common.SessionProvider;
 
 public class BookStoreManageDataServiceImpl implements BookStoreManageDataService {
-	private JCRDataStorage jcrDataStorage = new JCRDataStorage();
-	  public BookStoreManageDataServiceImpl(RepositoryService rservice) {
-	    jcrDataStorage.setRepositoryService(rservice);
-	  }
-
+	
+	private RepositoryService repositoryService;
+	private SessionProviderService sessionProviderService;
+	
+	public BookStoreManageDataServiceImpl(RepositoryService repositoryService,SessionProviderService sessionProviderService ){
+		this.repositoryService=repositoryService;
+		this.sessionProviderService=sessionProviderService;
+	}
+	
 	@Override
-	public Book addNewBook(Book book) {
-		return jcrDataStorage.addBook(book);
+	public Node addNewBook(String bookId, String bookName, String bookAuthor, Calendar bookPublisherDate, Long pricePublisher,Long priceSell, String bookCategory ) throws Exception{
+		ManageableRepository repository;
+		
+			repository = repositoryService.getRepository(BookNodeTypes.REPOS);
+			SessionProvider sessionProvider = sessionProviderService.getSystemSessionProvider(null);
+			Session session = sessionProvider.getSession(BookNodeTypes.WORK_SPACE, repository);
+			Node rootNode = session.getRootNode();
+			Node bookstore = rootNode.hasNodes() ? rootNode.getNode(bookId) : rootNode.addNode(bookId);
+			Node book = bookstore.addNode(bookId);
+			book.setProperty(BookNodeTypes.BOOK_NAME, bookName);
+			book.setProperty(BookNodeTypes.BOOK_AUTHOR, bookAuthor);
+			book.setProperty(BookNodeTypes.PUBLISHER_YEAR, bookPublisherDate);
+			book.setProperty(BookNodeTypes.BOOK_CATEGORY, bookCategory);
+			book.setProperty(BookNodeTypes.PRICE_PUBLISHER, pricePublisher);
+			book.setProperty(BookNodeTypes.PRICE_SELL, priceSell);
+			return book;
+		
+	}
+	
+	@Override
+	public Book deleteBook(String bookName) throws Exception{
+		ManageableRepository repository;
+		
+		repository = repositoryService.getRepository(BookNodeTypes.REPOS);
+		SessionProvider sessionProvider = sessionProviderService.getSystemSessionProvider(null);
+		Session session = sessionProvider.getSession(BookNodeTypes.WORK_SPACE, repository);
+		Node rootNode = session.getRootNode();
+		Node bookstrore = rootNode.hasNode(bookName) ? rootNode.getNode(bookName) : null;
+		if(bookstrore==null){
+			return null;
+		}
+		else{
+			bookstrore.remove();
+			session.save();
+		}
+		if(session!=null){
+			session.logout();
+			
+		}
+		
+		
+		return null;
 	}
 
 	@Override
@@ -25,11 +74,7 @@ public class BookStoreManageDataServiceImpl implements BookStoreManageDataServic
 		return null;
 	}
 
-	@Override
-	public Book deleteBook(Book book) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public List<Book> getAllBookByName(String bookName) {
@@ -63,6 +108,12 @@ public class BookStoreManageDataServiceImpl implements BookStoreManageDataServic
 
 	@Override
 	public List<Book> getAllBookByPrice(Long price) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Node addNewBook(Book book) {
 		// TODO Auto-generated method stub
 		return null;
 	}
