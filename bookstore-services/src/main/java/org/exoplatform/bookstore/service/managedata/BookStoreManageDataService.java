@@ -1,11 +1,9 @@
 package org.exoplatform.bookstore.service.managedata;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.jcr.Node;
-import javax.jcr.Value;
 
 import org.exoplatform.bookstore.Entity.Book;
 
